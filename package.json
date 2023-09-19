@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "path": "^0.12.7",
+    "progress": "^2.0.3"
+  }
+}
