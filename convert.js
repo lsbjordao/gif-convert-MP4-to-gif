@@ -37,21 +37,10 @@ process1.on('close', (code) => {
     console.log('\nConversão FFmpeg concluída. O arquivo GIF foi salvo em:', outputGIFPath);
 
     // Comando Gifsicle para ajustar o número de loops
-    const gifsicleCommand = `"C:/gifsicle-1.94/gifsicle" "${outputGIFPath}" --no-loopcount > -o "${outputGIFPath}"`;
-    
+    const gifsicleCommand = `"C:/gifsicle-1.94/gifsicle" "${outputGIFPath}" --no-loopcount"`;
+
     // Iniciar o processo Gifsicle
     const process2 = exec(gifsicleCommand);
-
-    // Acompanhar a saída padrão do Gifsicle, se necessário
-    process2.stdout.on('data', (data) => {
-      // Lida com a saída do Gifsicle, se necessário
-      console.log(data.toString());
-    });
-
-    process2.stderr.on('data', (data) => {
-      // Lida com os erros do Gifsicle, se necessário
-      console.error(data.toString());
-    });
 
     process2.on('close', (gifsicleCode) => {
       if (gifsicleCode === 0) {
